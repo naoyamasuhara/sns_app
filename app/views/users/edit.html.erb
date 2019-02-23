@@ -1,7 +1,9 @@
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <%= form_for @user do |f| %>
+    <%= f.label :ニックネーム %><br>
+    <%= f.text_field :name, class: 'form-control user_form' %>
+    <%= f.label :自己紹介 %><br>
+    <%= f.text_area :description, class: 'form-control user_form'  %>
+    <div align= "right"><%= f.submit "更新する", class: "btn btn-success" %></div>
+  <% end %>
+</div>

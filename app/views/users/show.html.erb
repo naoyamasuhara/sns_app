@@ -1,0 +1,23 @@
+<div class="container">
+  <div align="right"><%= link_to "日記一覧", diaries_path, class: "btn btn-info" %>　<a href="/users/<%= current_user.id %>/edit" class="btn btn-success" role=button >プロフィール編集</a></div>
+　<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="#" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text text-center"><%= current_user.name %>さん</p>
+    </div>
+  </div>
+  <div class="card bg-light mb-3" style="max-width: 18rem;">
+    <div class="card-header"><h5>マイフレンド一覧</h5></div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <h5 class="card-text"></h5>
+    </div>
+  </div>
+  <div class="card bg-light mb-3" style="max-width: 18rem;">
+    <div class="card-header"><h5>マイコミュニティ</h5></div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <h5 class="card-text"></h5>
+    </div>
+  </div>
+</div>

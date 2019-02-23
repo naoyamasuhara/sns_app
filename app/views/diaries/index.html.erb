@@ -1,0 +1,15 @@
+<div class="container">
+  <div align="right"><%= link_to '日記を書く', new_diary_path, class: "btn btn-primary" %>　<a href="/users/<%= current_user.id %>" class="btn btn-secondary" role=button >マイページ</a></div>
+  <h2>日記一覧</h2>
+  <%= @diaries.each do |diary| %>
+    <div class="diary-index-content">
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="text-center"><h5><%= truncate(diary.title, length: 20) %></h5></div>
+          <div class="text-center"><p><%= truncate(diary.content, length: 20) %></p></div>
+          <%= link_to '日記を見る', diary_path(diary), class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
