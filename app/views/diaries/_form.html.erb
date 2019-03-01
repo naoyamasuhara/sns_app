@@ -1,7 +1,16 @@
+<% @diary.errors.full_messages.each do |message| %>
+  <%= message %>
+<% end %>
 <%= form_for @diary do |f| %>
-  <%= f.label :タイトル %><br>
-  <%= f.text_field :title, class: 'form-control diary_form' %>
-  <%= f.label :コメント %><br>
-  <%= f.text_area :content, class: 'form-control diary_form' %>
-  <div align="right"><%= f.submit "送信する", class: "btn btn-success" %></div>
+  <div class="form_group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control input__diary-title' %>
+  </div>
+  <div class="form_group">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'form-control input__diary-content' %>
+  </div>
+  <div class="input__diary-submit">
+    <%= f.submit "投稿する", class: "btn btn-success" %>
+  </div>
 <% end %>

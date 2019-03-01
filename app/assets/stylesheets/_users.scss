@@ -1,6 +1,46 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.user_form{
+.user_form, .profile_image {
     margin-bottom: 20px;
+}
+
+.profile_image_tag {
+    object-fit: contain;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    max-height: 100px;
+}
+
+.mypage {
+    position: relative;
+}
+
+.user-page-profile {
+    position: absolute;
+    min-height: 500px;
+    min-width: 300px;
+    right: 350px;
+    top: 170px;
+}
+
+.profile_image {
+    position: absolute;
+    left: 350px;
+    top: 170px;
+    min-width: 300px;
+}
+
+.user-page-friend {
+    position: absolute;
+    left: 350px;
+    top: 400px;
+    min-width: 300px;
+}
+
+.user-page-community {
+    position: absolute;
+    left: 350px;
+    top: 530px;
+    min-width: 300px;
 }

@@ -1,8 +1,8 @@
 class DiariesController < ApplicationController
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
-    
+
   def index
-    @diaries = current_user.diaries
+    @diaries = Diary.page(params[:page]).per(3)
   end
   
   def show
@@ -39,7 +39,7 @@ class DiariesController < ApplicationController
   
   private
     def diary_params
-      params.require(:diary).permit(:title, :content)
+      params.require(:diary).permit(:title, :content, :profile_image)
     end
     
     def set_diary

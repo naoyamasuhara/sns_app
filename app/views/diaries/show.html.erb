@@ -1,12 +1,17 @@
 <div class="container">
   <div class="card">
     <div class="card-header">
-      <h3><%= @diary.title %></h3>
+      <h3>
+        <%= @diary.title %>
+        <div class="show-diary-button">
+          <%= link_to '編集',edit_diary_path(@diary), class:"btn btn-primary" %>　 
+          <%= link_to '削除',diary_path(@diary), method: :delete, data: { confirm: '本当に削除しますか？' },class:"btn btn-danger" %>
+        </div>
+      </h3>
       <h5><%= @diary.created_at.strftime('%Y年%m月%d日 %H:%M') %></h5>
     </div>
     <div class="card-body">
       <h5 class="card-text"><%= @diary.content %></h5>
     </div>
   </div>
-  <div align="right"><%= link_to '編集',edit_diary_path(@diary), class:"btn btn-primary" %>　 <%= link_to '削除',diary_path(@diary), method: :delete, data: { confirm: '本当に削除しますか？' },class:"btn btn-danger" %></div>
 </div>
