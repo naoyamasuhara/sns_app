@@ -4,13 +4,13 @@
 <%= form_for @diary do |f| %>
   <div class="form_group">
     <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control input__diary-title' %>
+    <%= f.text_field :title, class: 'form-control diary__input-title' %>
   </div>
   <div class="form_group">
     <%= f.label :content %>
-    <%= f.text_area :content, class: 'form-control input__diary-content' %>
+    <%= f.text_area :content, class: 'form-control diary-content' %>
   </div>
-  <div class="input__diary-submit">
+  <div class="diary__input-submit">
     <%= f.submit "投稿する", class: "btn btn-success" %>
   </div>
 <% end %>

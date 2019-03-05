@@ -1,0 +1,30 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.user__input-name, .user__input-description, .user__profile-card-image, .user__card-friend
+  margin-bottom: 20px
+
+.user__input-submit, .user__diary-button
+  text-align: right
+
+.user__container 
+  @extend .container
+  overflow: hidden
+
+.user__profile
+  float: left
+  width: 50%
+
+.user__sidebar
+  float: left
+  width: 50%
+  
+.user__profile-image-tag 
+  object-fit: contain
+  background-color: white
+  border-bottom: 1px solid #ddd
+  max-height: 100px
+
+.user__card-friend, .user__card-community, .user__profile-card-image, .user__card-profile, .user__card-diary
+  margin-left: auto
+  margin-right: auto
