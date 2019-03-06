@@ -10,22 +10,31 @@
   </head>
   <header>
     <div class="container">
-      <div class="header-inner">
-        <h3 class="header-logo">social ties</h3>
-        <div class="header-list">
-          <%= link_to "TOP", root_path, class: "btn btn-outline-primary" %>
-          <% if user_signed_in? %>
-            <a href="/users/<%= current_user.id %>" class="btn btn-outline-secondary" role=button >マイページ</a>
-            <a href="/users/<%= current_user.id %>/edit", class="btn btn-outline-success" role=button %>プロフィール編集</a>
-            <a href="#" class="btn btn-outline-info" role=button >マイフレンド</a>
-            <%= link_to "日記", diaries_path, class: "btn btn-outline-primary" %>
-            <a href="#" class="btn btn-outline-warning" role=button >メッセージ</a>
-            <a href="#" class="btn btn-outline-info" role=button >マイコミュニティ</a>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-warning" %>
-          <% else %>
-            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-warning" %>
-            <%= link_to 'ログイン',new_user_session_path, class: "btn btn-outline-success" %>
-          <% end %>
+      <div class="header__inner">
+        <h3 class="header__logo">social ties</h3>
+        <div class="dropdown show">
+          <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            メニュー
+          </a>
+          <div class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="header__list">
+              <%= link_to "TOP", root_path %><br>
+              <% if user_signed_in? %>
+                <a href="/users/<%= current_user.id %>">マイページ</a><br>
+                <a href="/users/<%= current_user.id %>/edit" %>プロフィール編集</a><br>
+                <a href="#">マイフレンド</a><br>
+                <%= link_to "日記", diaries_path %><br>
+                <a href="#">メッセージ</a><br>
+                <a href="#">マイコミュニティ</a><br>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><br>
+              <% else %>
+                <div class="dropdown-divider"></div>
+                <%= link_to '新規登録', new_user_registration_path %><br>
+                <%= link_to 'ログイン',new_user_session_path %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
