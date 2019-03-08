@@ -1,0 +1,16 @@
+<div class="container">
+  <%= link_to '日記を書く', new_diary_path, class: "btn btn-primary diary__index-button" %>　
+  <h2 class="diary__title">日記一覧</h2>
+  <div class="diary__index">
+    <% @diaries.each do |diary| %>
+      <div class="card diary__card" style="width: 18rem;">
+        <div class="card-body diary__card-body">
+          <h5 class="card-title"><%= truncate(diary.title, length: 20) %></h5>
+          <p class="card-text"><p><%= truncate(diary.content, length: 100) %></p>
+          <%= link_to '日記を見る', diary_path(diary), class: "btn btn-info diary__card-button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @diaries %>
+</div>

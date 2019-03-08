@@ -1,0 +1,37 @@
+.top
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-around
+  
+.top__card-profile, .top__card-mypage, .top__card-diary, .top__card-friend, .top__card-message, .top__card-community
+  @extend .card
+  margin: 25px
+  min-height: 200px
+  min-width: 250px
+  position: relative
+  display: inline
+
+.top__card-profile
+  background-color: #c0542d
+  
+.top__card-mypage
+  background-color: #d6d680
+  
+.top__card-diary
+  background-color: #499475
+  
+.top__card-friend
+  background-color: #bf545e
+  
+.top__card-message
+  background-color: #ff8c00
+ 
+.top__card-community
+  background-color: #487ca3
+
+.top__card-header
+  font-weight: bold
+
+.top__card-button
+  position: absolute
+  bottom: 10px

@@ -1,7 +1,12 @@
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control user__input-name' %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control user__input-description'  %>
+    <%= f.file_field :profile_image %>
+    <div class="user__input-submit">
+      <%= f.submit "更新する", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>

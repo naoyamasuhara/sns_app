@@ -1,0 +1,54 @@
+<div class="user__container">
+  <div class="user__sidebar">
+    <div class="card bg-light mb-3 user__card-friend" style="max-width: 25rem;">
+      <div class="card-header"><h5>マイフレンド一覧</h5></div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <h5 class="card-text"></h5>
+      </div>
+    </div>
+    <div class="card bg-light mb-3 user__card-community" style="max-width: 25rem;">
+      <div class="card-header"><h5>マイコミュニティ</h5></div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <h5 class="card-text"></h5>
+      </div>
+    </div>
+    <div class="card bg-light mb-3 user__card-diary" style="max-width: 25rem;">
+      <div class="card-header"><h5>日記</h5></div>
+      <div class="card-body">
+        <div class="card-text">
+          <div class="card diary__card" style="width: 18rem;">
+            <div class="card-body diary__card-body">
+              <h5 class="card-title"><%= truncate(@user.diaries.last.title, length: 20) %></h5>
+              <p class="card-text"><p><%= truncate(@user.diaries.last.content, length: 100) %></p>
+              <%= link_to '最新の日記を見る', diary_path(@user.diaries.last), class: "btn btn-primary diary__card-button" %>
+            </div>
+          </div>
+        </div>
+        <div class="user__diary-button">
+          <%= link_to '日記一覧', diaries_path, class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user__profile">
+    <div class="card user__profile-card-image" style="width: 25rem;">
+　    <% if @user.profile_image.present? %>
+　      <%= image_tag @user.profile_image.url, class:"user__profile-image-tag" %>
+　    <% else %>
+　      <%= image_tag "default.jpg", class:"user__profile-image-tag" %>
+　    <% end %>
+      <div class="card-body">
+        <p class="card-text text-center"><%= @user.name %>さん</p>
+      </div>
+    </div>
+    <div class="card bg-light mb-3 user__card-profile" style="max-width: 25rem;">
+      <div class="card-header"><h5><%= @user.name %></h5></div>
+      <div class="card-body">
+        <h5 class="card-title">自己紹介</h5>
+        <h5 class="card-text"><%= current_user.description %></h5>
+      </div>
+    </div>
+  </div>
+</div>

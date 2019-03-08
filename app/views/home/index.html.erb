@@ -1,4 +1,46 @@
-<%= current_user.name %>
-<%= current_user.description %>
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container top">
+  <div class="card top__card-profile" style="width: 18rem;">
+    <div class="card-header top__card-header">マイプロフィール</div>
+    <div class="card-body">
+      <p class="card-text">プロフィールを書いて自分のことをみんなに知ってもらおう<br>
+      好きな画像も登録出来る
+      </p>
+      <%= link_to "プロフィール編集",edit_user_path(current_user.id), class: "btn btn-primary top__card-button" %>
+    </div>
+  </div>
+  <div class="card top__card-mypage" style="width: 18rem">
+    <div class="card-header top__card-header">マイページ</div>
+    <div class="card-body">
+      <p class="card-text">自分のページがどうなっているのか確認しよう</p>
+      <a href="/users/<%= current_user.id %>" class="btn btn-primary top__card-button">マイページ</a>
+    </div>
+  </div>
+  <div class="card top__card-diary" style="width: 18rem;">
+    <div class="card-header top__card-header">日記</div>
+    <div class="card-body">
+      <p class="card-text">日常の気になったことや話したいことを日記に書こう</p>
+      <%= link_to '日記を書く', new_diary_path, class: "btn btn-primary top__card-button" %>
+    </div>
+  </div>
+  <div class="card top__card-friend" style="width: 18rem;">
+    <div class="card-header top__card-header">マイフレンド</div>
+    <div class="card-body">
+      <p class="card-text">気になったユーザーにフレンド依頼してフレンドに登録しよう</p>
+      <a href="#" class="btn btn-primary top__card-button">フレンド検索</a>
+    </div>
+  </div>
+  <div class="card top__card-message" style="width: 18rem;">
+    <div class="card-header top__card-header">メッセージ</div>
+    <div class="card-body">
+      <p class="card-text">フレンドになった人と直接やりとりしよう</p>
+      <a href="#" class="btn btn-primary top__card-button">メッセージ</a>
+    </div>
+  </div>
+  <div class="card top__card-community" style="width: 18rem;">
+    <div class="card-header top__card-header">マイコミュニティ</div>
+    <div class="card-body">
+      <p class="card-text">コミュニティを作成したり、参加したりして好きなことを共有しよう</p>
+      <a href="#" class="btn btn-primary top__card-button">コミュニティ検索</a>
+    </div>
+  </div>
+</div>
