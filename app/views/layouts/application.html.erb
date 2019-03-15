@@ -25,7 +25,7 @@
                 <a href="#">マイフレンド</a><br>
                 <%= link_to "日記", diaries_path %><br>
                 <a href="#">メッセージ</a><br>
-                <a href="#">マイコミュニティ</a><br>
+                <%= link_to 'コミュニティ', communities_path %><br>
                 <div class="dropdown-divider"></div>
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><br>
               <% else %>
