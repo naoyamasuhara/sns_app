@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="community__show-button">
+    <%= link_to 'コミュニテイ一覧', communities_path, class: "btn btn-info" %>
+    <%= link_to '削除', community_path(@community), method: :delete, data: { confirm: '本当に削除しますか？' },class:"btn btn-danger" %>
+  </div>
+  <div class="card community__show-card">
+    <div class="card-header"><%= @community.name %></div>
+    <div class="card-body">
+      <p class="card-text"><%= @community.description %></p>
+    </div>
+  </div>
+</div>
