@@ -1,0 +1,15 @@
+<div class="container">
+  <%= link_to 'チャットを作成する', new_chat_path, class: "btn btn-primary chat__index-button" %>
+  <h2>チャット一覧</h2>
+  <div class="chat__index">
+    <% @chats.each do |chat| %>
+      <div class="card chat__card" style="width: 18rem;">
+        <div class="card-header"><%= chat.name %></div>
+        <div class="card-body">
+          <div class="card-text"><%= chat.description %></div>
+          <%= link_to 'チャット詳細', chat_path(chat), class: "btn btn-info" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

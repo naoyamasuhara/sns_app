@@ -2,15 +2,15 @@ class CommunitiesController < ApplicationController
   before_action :set_community, only: [:show, :edit, :update, :destroy]
 
   def index
-    @communities = Community.page(params[:page]).per(3)
+    @communities = Community.order(id: :desc).page(params[:page]).per(3)
   end
   
   def new
-    @community = Community.new
+    @community = current_user.build
   end
   
   def create
-    @community = Community.new(community_params)
+    @community = current_user.build(community_params)
     if @community.save
       flash[:success] = "「#{@community.name}」を登録しました。"
       redirect_to communities_path
