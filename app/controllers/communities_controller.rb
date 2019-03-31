@@ -6,11 +6,11 @@ class CommunitiesController < ApplicationController
   end
   
   def new
-    @community = current_user.build
+    @community = current_user.communities.build
   end
   
   def create
-    @community = current_user.build(community_params)
+    @community = current_user.communities.build(community_params)
     if @community.save
       flash[:success] = "「#{@community.name}」を登録しました。"
       redirect_to communities_path
