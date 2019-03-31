@@ -1,4 +1,4 @@
-<%=form_for @chat do |f| %>
+<%= form_for [@community, @chat] do |f| %>
   <div class="form_gruop">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control chat__input-title' %>

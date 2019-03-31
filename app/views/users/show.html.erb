@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="user__diary-button">
-          <%= link_to '日記一覧', diaries_path, class: "btn btn-info" %>
+          <%= link_to '他の日記はこちら', diaries_path, class: "btn btn-info" %>
         </div>
       </div>
     </div>
@@ -44,9 +44,8 @@
       </div>
     </div>
     <div class="card bg-light mb-3 user__card-profile" style="max-width: 25rem;">
-      <div class="card-header"><h5><%= @user.name %></h5></div>
+      <div class="card-header"><h5>自己紹介</h5></div>
       <div class="card-body">
-        <h5 class="card-title">自己紹介</h5>
         <h5 class="card-text"><%= current_user.description %></h5>
       </div>
     </div>

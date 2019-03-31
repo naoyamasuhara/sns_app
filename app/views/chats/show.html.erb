@@ -1,7 +1,16 @@
 <div class="container">
+  <div class="chat__show-button">
+    <%= link_to 'コミュニティに戻る', community_path(@community), class: "btn btn-info" %>　
+    <%= link_to '新しいスレッドを作る', new_community_chat_path(@community), class: "btn btn-primary" %>　
+    <% if @chat.user_id == current_user.id %>
+      <%= link_to '編集する', edit_community_chat_path(@community), class: "btn btn-success" %>　
+      <%= link_to '削除する', community_chat_path(@community), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+    <% end %>
+  </div>
   <div class="card">
     <div class="card-header">
-      <%= @chat.title>
+      <%= @chat.title %><br>
+      投稿者　<%= @chat.user.name %>さん
     </div>
     <div class="card-body">
       <%= @chat.description %>

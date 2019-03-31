@@ -1,10 +1,14 @@
 <div class="container">
   <div class="community__show-button">
-    <%= link_to 'コミュニテイ一覧', communities_path, class: "btn btn-info" %>　
+    <%= link_to 'コミュニテイに参加する', new_community_community_partcipant_path(@community), class: "btn btn-primary" %>　
+    <%= link_to 'コミュニテイ一覧に戻る', communities_path, class: "btn btn-info" %>
+  </div>
+  <div class="community__title">
+    <h2><%= @community.name %></h2>
   </div>
   <div class="card community__sidebar">
     <div class="card-header">
-      <p>管理人　さん</p>
+      管理人さん
     </div>
     <div class="card-body">
       <p>メンバー数　人</p>
@@ -13,11 +17,32 @@
   </div>
   <div class="community__information">
     <div class="card community__show-card">
-      <div class="card-header"><%= @community.name %></div>
+      <div class="card-header">コミュニティ詳細</div>
       <div class="card-body">
         <p class="card-text"><%= @community.description %></p>
       </div>
     </div>
-    <%= link_to 'スレッドを作成する', new_chat_path, class: "btn btn-primary" %>
+    <div class="community__show-chat">
+      <h3 class="community__show-chat-title">
+        スレッド一覧
+      </h3>
+      <div class="community__show-card-chat-title-button">
+        <%= link_to '新しいスレッドを作成する', new_community_chat_path(@community), class: "btn btn-primary" %>
+      </div>
+    <% @community.chats.each do |chat| %>
+      <div class="card community__show-card-chat">
+        <div class="card-header">
+          <%= chat.title %><br>
+          投稿者　<%= chat.user.name %>さん
+        </div>
+        <div class="card-body">
+          <div class="card-text"><%= chat.description %></div>
+          <div class="community__show-card-chat-button">
+            <%= link_to 'チャット詳細', community_chat_path(@community, chat.id), class: "btn btn-info" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
   </div>
 </div>

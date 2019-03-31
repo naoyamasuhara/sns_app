@@ -1,4 +1,4 @@
 class Chat < ApplicationRecord
-  validates :title, presence: true
   belongs_to :community
+  belongs_to :user
 end
