@@ -4,10 +4,20 @@
   <div class="community__index">
     <% @communities.each do |community| %>
       <div class="card community__card" style="width: 18rem;">
-        <div class="card-header"><%= community.name %></div>
+        <div class="card-header">
+          <%= community.name %>
+          <% if community.admin_user?(current_user) %>
+            <span class="badge badge-primary float-right">管理者</span>
+          <% end %>
+        </div>
         <div class="card-body community__card-body">
           <div class="card-text"><%= community.description %></div>
-          <%= link_to 'コミュニティ詳細', community_path(community), class: "btn btn-info community__card-button" %>
+          <div class="community__card-body-btn-wrapper">
+            <%= link_to 'コミュニティ詳細', community_path(community), class: "btn btn-info btn-sm" %>
+            <% if community.admin_user?(current_user) %>
+              <%= link_to 'ユーザー一覧', community_community_participants_path(community), class: "btn btn-outline-primary btn-sm" %>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>

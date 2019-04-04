@@ -1,0 +1,18 @@
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="card d-inline-block">
+      <div class="card-header text-center font-weight-bold">
+        <%= user.name %>
+      </div>
+      <div class="card-body text-center">
+        <%= image_tag 'https://www.gyomy.com/images/user-300.png', size: '100', class: 'd-block mb-3', style: "margin: 0 auto;" %>
+        <% if @community.admin_user?(user) %>
+          <span class="btn btn-sm btn-outline-warning pl-4 pr-4">管理者</span>
+        <% else %>
+          <% community_participant = @community.community_participants.find_by(user_id: user.id) %>
+          <%= link_to '管理者にする', community_community_participant_path(@community, community_participant), method: :patch, size: '100', class: 'btn btn-sm btn-outline-info' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

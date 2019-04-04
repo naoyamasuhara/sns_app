@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2019_03_24_120355) do
     t.index ["user_id"], name: "index_community_partcipants_on_user_id"
   end
 
+  create_table "community_participants", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "community_id", null: false
+    t.boolean "admin", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_community_participants_on_community_id"
+    t.index ["user_id"], name: "index_community_participants_on_user_id"
+  end
+
   create_table "diaries", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"

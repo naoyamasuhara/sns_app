@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true, on: :create
   has_many :diaries, dependent: :destroy
-  has_many :communities, through: :community_partcipants
-  has_many :community_partcipants, inverse_of: :user
+
+  # inverse_ofをつけるとcommunity作成時に自動でcommunity_participantのレコードを作成してくれる。
+  has_many :community_participants, inverse_of: :user
+  has_many :communities, through: :community_participants
 end
