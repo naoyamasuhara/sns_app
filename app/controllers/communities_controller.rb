@@ -12,7 +12,6 @@ class CommunitiesController < ApplicationController
   def create
     @community = current_user.communities.build(community_params)
     if @community.save
-      flash[:success] = "「#{@community.name}」を登録しました。"
       redirect_to communities_path
     else
       render :new
@@ -27,7 +26,6 @@ class CommunitiesController < ApplicationController
   
   def update
     if @community.update(community_params)
-      flash[:success] = "「#{@community.name}」を更新しました。"
       redirect_to @community
     else
       render :edit
@@ -36,7 +34,6 @@ class CommunitiesController < ApplicationController
   
   def destroy
     @community.destroy
-    flash[:danger] = "「#{@community.name}を削除しました」"
     redirect_to communities_path
   end
   

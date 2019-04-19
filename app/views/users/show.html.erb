@@ -20,14 +20,20 @@
         <div class="card-text">
           <div class="card diary__card" style="width: 18rem;">
             <div class="card-body diary__card-body">
-              <h5 class="card-title"><%= truncate(@user.diaries.last.title, length: 20) %></h5>
-              <p class="card-text"><p><%= truncate(@user.diaries.last.content, length: 100) %></p>
-              <%= link_to '最新の日記を見る', diary_path(@user.diaries.last), class: "btn btn-primary diary__card-button" %>
+              <% if @user.diaries.exists? %>
+                <h5 class="card-title"><%= truncate(@user.diaries.last.title, length: 20) %></h5>
+                <p class="card-text"><p><%= truncate(@user.diaries.last.content, length: 100) %></p>
+                <%= link_to '最新の日記を見る', user_diary_path(@user, @user.diaries.last), class: "btn btn-primary diary__card-button" %>
+              <% else %>
+                <p>まだ日記はありません。</p>
+              <% end %>
             </div>
           </div>
         </div>
         <div class="user__diary-button">
-          <%= link_to '他の日記はこちら', diaries_path, class: "btn btn-info" %>
+          <% if @user.diaries.exists? %>
+            <%= link_to '他の日記はこちら', user_diaries_path(@user), class: "btn btn-info" %>
+          <% end %>
         </div>
       </div>
     </div>

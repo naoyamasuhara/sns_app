@@ -1,14 +1,14 @@
 <% @diary.errors.full_messages.each do |message| %>
   <%= message %>
 <% end %>
-<%= form_for @diary do |f| %>
+<%= form_for [current_user, @diary] do |f| %>
   <div class="form_group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control diary__input-title' %>
   </div>
   <div class="form_group">
     <%= f.label :content %>
-    <%= f.text_area :content, class: 'form-control diary-content' %>
+    <%= f.text_area :content, class: 'form-control diary__input-content' %>
   </div>
   <div class="diary__input-submit">
     <%= f.submit "投稿する", class: "btn btn-success" %>
