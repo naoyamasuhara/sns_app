@@ -27,7 +27,7 @@ class CommunityPartcipantsController < ApplicationController
   private
   
   def set_community_partcipant
-    @community_partcipant = current_user.community_partcipants.where(id: @community.id)
+    @community_partcipant = CommunityPartcipant.find(params[:id])
   end
   
   def set_community
