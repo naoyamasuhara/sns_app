@@ -7,6 +7,10 @@ class CommunityPartcipantsController < ApplicationController
     @users = @community.users.order(id: :desc)
   end
   
+  def show
+    @community_participant = @comumunity.community_participants.find_by(user_id: current_user.id)
+  end
+  
   def create
     @community_partcipant = current_user.community_partcipants.build(community_id: params[:community_id])
     @community_partcipant.save!

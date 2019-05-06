@@ -19,6 +19,7 @@ class CommunitiesController < ApplicationController
   end
   
   def show
+    @community_partcipant = @community.community_partcipants.find_by(user_id: current_user.id)
   end
   
   def edit
@@ -46,4 +47,5 @@ class CommunitiesController < ApplicationController
   def set_community
     @community = Community.find(params[:id])
   end
+  
 end

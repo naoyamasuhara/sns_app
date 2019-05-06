@@ -1,7 +1,7 @@
 <div class="container">
   <div class="community__show-button">
     <% if CommunityPartcipant.exists?(user_id: current_user.id, community_id: @community.id)%>
-      <%= link_to 'コミュニティを退会する', community_community_partcipant_path(@community), method: :delete, class: "btn btn-danger" %>　
+      <%= link_to 'コミュニティを退会する', community_community_partcipant_path(@community, @community_partcipant), method: :delete, class: "btn btn-danger" %>　
     <% else %>
       <%= link_to 'コミュニテイに参加する', community_community_partcipants_path(@community), method: :post, class: "btn btn-primary" %>　
     <% end %>
