@@ -1,12 +1,65 @@
 <div class="container">
   <div class="community__show-button">
-    <%= link_to 'コミュニテイ一覧', communities_path, class: "btn btn-info" %>
-    <%= link_to '削除', community_path(@community), method: :delete, data: { confirm: '本当に削除しますか？' },class:"btn btn-danger" %>
+    <% if !@community.admin_user?(current_user) %>
+      <% if CommunityPartcipant.exists?(user_id: current_user.id, community_id: @community.id)%>
+        <%= link_to 'コミュニティを退会する', community_community_partcipant_path(@community, @community_partcipant), method: :delete, class: "btn btn-danger" %>　
+      <% else %>
+        <%= link_to 'コミュニテイに参加する', community_community_partcipants_path(@community), method: :post, class: "btn btn-primary" %>　
+      <% end %>
+    <% end %>
+    <% if @community.admin_user?(current_user) %>
+      <%= link_to 'コミュニティを編集する', edit_community_path(@community), class: "btn btn-primary" %>　
+      <%= link_to 'コミュニティを削除する', community_path(@community), method: :delete, data: { confirm: '本当にコミュニティを削除しますか？' },class: "btn btn-danger"  %>　
+    <% end %>
+    <%= link_to 'コミュニテイ一覧に戻る', communities_path, class: "btn btn-info" %>
   </div>
-  <div class="card community__show-card">
-    <div class="card-header"><%= @community.name %></div>
+  <div class="community__title">
+    <h2>コミュニティ名</h2>
+    <h2 style="text-decoration:underline"><%= @community.name %></h2>
+  </div>
+  <div class="card community__sidebar">
+    <div class="card-header">
+      管理人　<%= @community.community_partcipants.first.user.name %>　さん
+    </div>
     <div class="card-body">
-      <p class="card-text"><%= @community.description %></p>
+      <p>メンバー数　<%= CommunityPartcipant.where(community_id: @community.id).count %>人</p>
+      <p>開設日　<%= @community.created_at.strftime('%Y年%m月%d日')  %></p>
+    </div>
+  </div>
+  <div class="community__information">
+    <div class="card community__show-card">
+      <div class="card-header">コミュニティ詳細</div>
+      <div class="card-body">
+        <p class="card-text"><%= @community.description %></p>
+      </div>
+    </div>
+    <div class="community__show-chat">
+      <h3 class="community__show-chat-title">
+        スレッド一覧
+      </h3>
+      <div class="community__show-card-chat-title-button">
+        <% if CommunityPartcipant.exists?(user_id: current_user.id, community_id: @community.id)%>
+          <%= link_to '新しいスレッドを作成する', new_community_chat_path(@community), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <% if @community.chats.exists? %>
+        <% @community.chats.each do |chat| %>
+          <div class="card community__show-card-chat">
+            <div class="card-header">
+              タイトル　<%= chat.title %><br>
+              投稿者　　<%= chat.user.name %>さん
+            </div>
+            <div class="card-body">
+              <div class="card-text"><%= chat.description %></div>
+              <div class="community__show-card-chat-button">
+                <%= link_to 'スレッド詳細', community_chat_path(@community, chat.id), class: "btn btn-info" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class= "community__show-chat-info">作成されたスレッドはありません</p>
+      <% end %>
     </div>
   </div>
 </div>

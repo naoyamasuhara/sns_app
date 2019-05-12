@@ -1,0 +1,21 @@
+<div class="container">
+  <div class ="community_partcipant__index-button">
+    <%= link_to 'コミュニティ一覧に戻る', communities_path, class: "btn btn-info" %>
+  </div>
+  <% @users.each do |user| %>
+    <div class="card d-link-block">
+      <div class="card-header text-center font-weight-bold">
+        <%= user.name %>
+      </div>
+      <div class="card-body text-center">
+        <%= image_tag 'https://www.gyomy.com/images/user-300.png', size: '100', class: 'd-block mb-3', style: "margin: 0 auto;" %>
+        <% if @community.admin_user?(user) %>
+          <span class="btn btn-sm btn-outline-warning pl-4 pr-4">管理者</span>
+    　  <% else %>
+    　    <% community_partcipant = @community.community_partcipants.find_by(user_id: user.id) %>
+    　    <%= link_to '管理者にする', community_community_partcipant_path(@community, community_partcipant), method: :patch, size: '100', class: 'btn btn-sm btn-outline-info' %>
+    　  <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

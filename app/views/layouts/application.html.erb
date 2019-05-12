@@ -22,10 +22,8 @@
               <% if user_signed_in? %>
                 <a href="/users/<%= current_user.id %>">マイページ</a><br>
                 <a href="/users/<%= current_user.id %>/edit" %>プロフィール編集</a><br>
-                <a href="#">マイフレンド</a><br>
-                <%= link_to "日記", diaries_path %><br>
-                <a href="#">メッセージ</a><br>
-                <%= link_to 'コミュニティ', communities_path %><br>
+                <%= link_to "自分の日記を見る", user_diaries_path(user_id: current_user.id) %><br>
+                <%= link_to 'コミュニティ一覧', communities_path %><br>
                 <div class="dropdown-divider"></div>
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><br>
               <% else %>

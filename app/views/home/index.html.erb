@@ -12,35 +12,35 @@
     <div class="card-header top__card-header">マイページ</div>
     <div class="card-body">
       <p class="card-text">自分のページがどうなっているのか確認しよう</p>
-      <a href="/users/<%= current_user.id %>" class="btn btn-primary top__card-button">マイページ</a>
+      <a href="/users/<%= current_user.id %>" class="btn btn-primary top__card-button">自分のページに行く</a>
     </div>
   </div>
   <div class="card top__card-diary" style="width: 18rem;">
     <div class="card-header top__card-header">日記</div>
     <div class="card-body">
       <p class="card-text">日常の気になったことや話したいことを日記に書こう</p>
-      <%= link_to '日記を書く', new_diary_path, class: "btn btn-primary top__card-button" %>
+      <%= link_to '日記を書く', new_user_diary_path(current_user), class: "btn btn-primary top__card-button" %>
     </div>
   </div>
   <div class="card top__card-friend" style="width: 18rem;">
-    <div class="card-header top__card-header">マイフレンド</div>
+    <div class="card-header top__card-header">フレンド(近日実装予定)</div>
     <div class="card-body">
       <p class="card-text">気になったユーザーにフレンド依頼してフレンドに登録しよう</p>
       <a href="#" class="btn btn-primary top__card-button">フレンド検索</a>
     </div>
   </div>
   <div class="card top__card-message" style="width: 18rem;">
-    <div class="card-header top__card-header">メッセージ</div>
+    <div class="card-header top__card-header">メッセージ(近日実装予定)</div>
     <div class="card-body">
       <p class="card-text">フレンドになった人と直接やりとりしよう</p>
       <a href="#" class="btn btn-primary top__card-button">メッセージ</a>
     </div>
   </div>
   <div class="card top__card-community" style="width: 18rem;">
-    <div class="card-header top__card-header">マイコミュニティ</div>
+    <div class="card-header top__card-header">コミュニティ</div>
     <div class="card-body">
       <p class="card-text">コミュニティを作成したり、参加したりして好きなことを共有しよう</p>
-      <%= link_to 'コミュニティ', communities_path, class: "btn btn-primary top__card-button" %>
+      <%= link_to 'コミュニティ一覧', communities_path, class: "btn btn-primary top__card-button" %>
     </div>
   </div>
 </div>
